@@ -1,9 +1,10 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite3:///tasks.db'
-db = SQLAlchemy(app)
+Task = Flask(__name__)
+Task.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite3:///tasks.db'
+db = SQLAlchemy(Task)
+db.init_app(Task)
 
 class Task(db.Model):
     id = db.Column(db.Integer, primary_key=True)
